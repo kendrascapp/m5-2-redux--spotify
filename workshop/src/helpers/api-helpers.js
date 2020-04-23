@@ -1,16 +1,14 @@
+// export function fetchArtistProfile(token, artistId) {
+//         const options = {
+//         headers: { Authorization: `Bearer ${token}` },
+//     };
+
+//     const url = `https://api.spotify.com/v1/artists/${artistId}`;
+
+//     return fetch(url, options).then((response) => response.json());
+// }
+
 const SPOTIFY_ROOT = 'https://api.spotify.com/v1';
-
-export function fetchRelatedArtists(token, artistId) {
-  return fetchFromApi(token, `/artists/${artistId}/related-artists`);
-}
-
-export function fetchTopTracks(token, artistId) {
-  return fetchFromApi(token, `/artists/${artistId}/top-tracks?country=US`);
-}
-
-export function fetchSearchResults(token, q, type = 'artist') {
-  return fetchFromApi(token, `/search?type=artist&q=${q}`);
-}
 
 export function fetchArtistProfile(token, artistId) {
   return fetchFromApi(token, `/artists/${artistId}`);
