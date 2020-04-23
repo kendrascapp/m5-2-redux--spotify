@@ -20,13 +20,13 @@ Redux makes this practical by letting you "combine reducers".
 ```js
 const state = {
   user: {
-    name: 'Bugs Bunny',
-    species: 'Wabbit',
+    name: "Bugs Bunny",
+    species: "Wabbit",
   },
   orders: [
     {
-      date: '01/02/03',
-      items: ['carrot', 'carrot', 'carrot', 'ACME powder'],
+      date: "01/02/03",
+      items: ["carrot", "carrot", "carrot", "ACME powder"],
     },
   ],
 };
@@ -41,7 +41,7 @@ What if we wrote two reducers?
 ```js
 function userReducer(state, action) {
   switch (action.type) {
-    case 'LOG_IN': {
+    case "LOG_IN": {
       return {
         name: action.name,
         species: action.species,
@@ -55,7 +55,7 @@ function userReducer(state, action) {
 
 function orderReducer(state, action) {
   switch (action.type) {
-    case 'ADD_ITEM_TO_CART': {
+    case "ADD_ITEM_TO_CART": {
       return {
         ...state,
         items: [...state.items, action.itemName],
@@ -73,10 +73,10 @@ function orderReducer(state, action) {
 Redux encourages this workflow by letting you **combine reducers**:
 
 ```js
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import userReducer from './user-reducer';
-import orderReducer from './order-reducer';
+import userReducer from "./user-reducer";
+import orderReducer from "./order-reducer";
 
 export default combineReducers({
   user: userReducer,
@@ -109,8 +109,11 @@ export default combineReducers({
   color: colorReducer,
   number: numberReducer,
 });
-
 // What is the initial state?
+{
+  color: 'red',
+  number: 4,
+}
 ```
 
 ---
@@ -121,26 +124,30 @@ function itemReducer(state) {
 }
 
 function locationReducer(state) {
-  return 'montreal';
+  return "montreal";
 }
 
 export default combineReducers({
   item: itemReducer,
   location: locationReducer,
 });
-
 // What is the initial state?
+{
+  item: { hi: 5},
+  location: 'montreal'
+}
+
 ```
 
 ---
 
 ```js
 function petReducer(state) {
-  return 'cat';
+  return "cat";
 }
 
 function furnitureReducer(state) {
-  return 'couch';
+  return "couch";
 }
 
 export default combineReducers({
@@ -149,6 +156,10 @@ export default combineReducers({
 });
 
 // What is the initial state?
+{
+  pet: 'cat',
+  household: 'couch'
+}
 ```
 
 ---
@@ -179,6 +190,11 @@ export default combineReducers({
 });
 
 // What is the initial state?
+{
+  data: {
+    entries: [],
+  }
+}
 ```
 
 ---
@@ -194,7 +210,7 @@ If that action doesn't match, it returns the current state. No problem.
 ```js
 function userReducer(state, action) {
   switch (action.type) {
-    case 'LOG_IN': {
+    case "LOG_IN": {
       return {
         name: action.name,
         species: action.species,
